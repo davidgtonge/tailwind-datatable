@@ -1,0 +1,6 @@
+{
+  "presets": [
+    ["@babel/preset-env", {"targets": "supports es6-module"}], 
+    "@babel/preset-react"
+  ],
+}

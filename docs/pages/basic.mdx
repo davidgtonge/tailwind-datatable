@@ -1,0 +1,40 @@
+import data from "../data/data.json"
+
+<DataTable
+  data={data.slice(0, 10)}
+  title="Basic Datatable"
+  columns={[
+    {
+      key: [
+        "first_name",
+        {key: "last_name", bold: true},
+        {key: "email", block: true},
+      ],
+      label: "Name",
+    },
+    {key: "ip_address", label: "IP Address"},
+    {
+      key: "active",
+      label: "Active",
+      format: val => (val ? "Yes" : "No"),
+      boolean: true,
+    },
+    {
+      key: "logins",
+      label: "Logins",
+      number: true,
+    },
+    {
+      key: "size",
+      label: "Size",
+      tag: true,
+    },
+    {
+      format: (val, item) => (
+        <a className="text-primary-700" href="#">
+          Some action
+        </a>
+      ),
+    },
+  ]}
+/>

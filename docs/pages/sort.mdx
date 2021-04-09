@@ -1,0 +1,100 @@
+import data from "../data/data.json"
+
+## DataTable with Sort
+
+The datatable supports sorting of local datasets. This is enabled by adding a **sort** flag to a column definition:
+
+```
+{key: "ip_address", label: "IP Address", sort: true},
+```
+
+Nested columns 
+
+
+This table enables sorting for three columns.
+
+Note how the combined first column has sort specified on the last name.
+
+<DataTable
+  data={data.slice(0, 10)}
+  className="mb-10 max-w-4xl"
+  columns={[
+    {
+      key: [
+        "first_name",
+        {key: "last_name", bold: true, sort: true},
+        {key: "email", block: true},
+      ],
+      label: "Name",
+    },
+    {key: "ip_address", label: "IP Address", sort: true},
+    {
+      key: "active",
+      label: "Active",
+      format: val => (val ? "Yes" : "No"),
+      boolean: true,
+    },
+    {
+      sort: true,
+      key: "logins",
+      label: "Logins",
+      number: true,
+    },
+    {
+      key: "size",
+      label: "Size",
+      tag: true,
+    },
+    {
+      format: (val, item) => (
+        <a className="text-blue-700 hover:underline" href="#">
+          Some action
+        </a>
+      ),
+    },
+  ]}
+/>
+
+Here is the code for the above table:
+
+```
+<DataTable
+  data={data}
+  title="Basic Datatable"
+  columns={[
+    {
+      key: [
+        "first_name",
+        {key: "last_name", bold: true, sort: true},
+        {key: "email", block: true},
+      ],
+      label: "Name",
+    },
+    {key: "ip_address", label: "IP Address", sort: true},
+    {
+      key: "active",
+      label: "Active",
+      format: val => (val ? "Yes" : "No"),
+      boolean: true,
+    },
+    {
+      sort: true,
+      key: "logins",
+      label: "Logins",
+      number: true,
+    },
+    {
+      key: "size",
+      label: "Size",
+      tag: true,
+    },
+    {
+      format: (val, item) => (
+        <a className="text-primary-700" href="#">
+          Some action
+        </a>
+      ),
+    },
+  ]}
+/>
+```

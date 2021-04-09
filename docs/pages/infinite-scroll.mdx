@@ -1,0 +1,90 @@
+import data from "../data/data.json"
+
+<DataTable
+  data={data}
+  title="Infinite Scroll"
+  options={{height: 400}}  columns={[
+    {
+      key: [
+        "first_name",
+        {key: "last_name", bold: true, sort: true},
+        {key: "email", block: true},
+      ],
+      label: "Name",
+    },
+    {key: "ip_address", label: "IP Address", sort: true},
+    {
+      key: "active",
+      label: "Active",
+      format: val => (val ? "Yes" : "No"),
+      boolean: true,
+    },
+    {
+      sort: true,
+      key: "logins",
+      label: "Logins",
+      number: true,
+    },
+    {
+      key: "size",
+      label: "Size",
+      tag: true,
+    },
+    {
+      format: (val, item) => (
+        <a className="text-blue-700 hover:underline" href="#">
+          Some action
+        </a>
+      ),
+    },
+  ]}
+/>
+
+
+This table enables sorting for three columns. 
+
+Note how the combined first column has sort specified on the last name.
+
+Here is the code for the above table:
+
+```
+<DataTable
+  data={data}
+  title="Basic Datatable"
+  columns={[
+    {
+      key: [
+        "first_name",
+        {key: "last_name", bold: true, sort: true},
+        {key: "email", block: true},
+      ],
+      label: "Name",
+    },
+    {key: "ip_address", label: "IP Address", sort: true},
+    {
+      key: "active",
+      label: "Active",
+      format: val => (val ? "Yes" : "No"),
+      boolean: true,
+    },
+    {
+      sort: true,
+      key: "logins",
+      label: "Logins",
+      number: true,
+    },
+    {
+      key: "size",
+      label: "Size",
+      tag: true,
+    },
+    {
+      format: (val, item) => (
+        <a className="text-primary-700" href="#">
+          Some action
+        </a>
+      ),
+    },
+  ]}
+/>
+```
